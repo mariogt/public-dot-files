@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# Mario Gajardo Tassara
+# MarioGT Software
+# https://www.mariogt.com
+# mario@mariogt.com
+
+# necessary to load scripting-addition during startup on macOS Big Sur
+# *yabai --load-sa* is configured to run through sudo without a password
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# Follow this guide whrn updating yabai to latest version
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#updating-to-the-latest-release
+
+
+# general
+yabai -m config layout                      bsp
+yabai -m config external_bar                off:45:0
+
+#padding
+yabai -m config top_padding                 30
+yabai -m config bottom_padding              10
+yabai -m config left_padding                10
+yabai -m config right_padding               10
+yabai -m config window_gap                  10
+
+#mouse
+yabai -m config mouse_follows_focus         on
+yabai -m config focus_follows_mouse         off #autofocus
+yabai -m config mouse_modifier              fn
+yabai -m config mouse_action1               move
+yabai -m config mouse_action2               resize
+
+#windows atrib
+yabai -m config window_opacity              off
+yabai -m config window_opacity_duration     0.0
+yabai -m config active_window_opacity       1.0
+yabai -m config normal_window_opacity       0.85
+yabai -m config window_shadow               float
+yabai -m config window_topmost              on
+yabai -m config window_placement            second_child
+
+#misc
+yabai -m config split_ratio                 0.50
+yabai -m config auto_balance                on
+
+# border
+yabai -m config window_border                on
+yabai -m config window_border_width          8
+yabai -m config active_window_border_color   0xe0ff00ff
+yabai -m config normal_window_border_color   0x00010101
+yabai -m config insert_feedback_color        0xaad75f5f
+
+# mission-control desktop labels
+yabai -m space 1 --label code
+yabai -m space 2 --label mail
+yabai -m space 3 --label web
+yabai -m space 4 --label notes
+yabai -m space 5 --label re
+yabai -m space 6 --label media
+yabai -m space 7 --label social
+yabai -m space 8 --label games
+
+# # assign apps to space rules
+# yabai -m rule --add app="^Mail$" space=mail
+# yabai -m rule --add app="^Safari$" space=web
+# yabai -m rule --add app="^Notes$" space=notes
+
+# don't manage rules
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Monitor de Actividad" app="^Monitor de Actividad$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
+yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
+yabai -m rule --add label="TabTopus" app="^TabTopus$" manage=off
+yabai -m rule --add label="Space Saver" app="^Space Saver$" manage=off
+
+# signals
+#yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+# yabai -m signal --add event=window_destroyed action="echo \"destroyed window with id \$YABAI_WINDOW_ID\""
+# yabai -m signal --add event=space_changed action="echo \"changed space \$YABAI_RECENT_SPACE_ID -> \$YABAI_SPACE_ID\""
+# yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
+echo "yabai configuration loaded.."
