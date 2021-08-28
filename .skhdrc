@@ -8,7 +8,7 @@ cmd - return            : /Applications/Kitty.app/Contents/MacOS/kitty --single-
 ctrl + shift - b        : open -na /Applications/Microsoft\ Edge.app
 ctrl + shift - e        : open -na /Applications/Emacs.app
 ctrl + shift - k        : bbedit --new-window bug.txt
-ctrl + shift - f        : osascript code/sourceCode/scripts/openwindow.sh
+ctrl + shift - f        : osascript ~/code/sourceCode/scripts/openwindow.sh
 ctrl + shift - m        : open -a /System/Applications/Utilities/Activity\ Monitor.app
 ctrl + shift - v        : mp3blaster --playmode=allrandom
 
