@@ -97,6 +97,10 @@ shift + ctrl + alt - r  : killall yabai &> /dev/null ; \
 ctrl + alt - f          : yabai -m window --toggle zoom-fullscreen
 shift + alt - f         : yabai -m window --toggle native-fullscreen
 
+# tile windows horizontal/vertical
+ctrl + alt - t          : yabai -m query --windows --window $YABAI_PROCESS_ID | jq -re '.split == "horizontal"' && yabai -m window $YABAI_PROCESS_ID --toggle split
+ctrl + alt - y          : yabai -m query --windows --window $YABAI_PROCESS_ID | jq -re '.split == "vertical"' && yabai -m window $YABAI_PROCESS_ID --toggle split
+
 # # prevents skhd from monitoring events for listed processes.
 # .blacklist [
 #     "terminal"

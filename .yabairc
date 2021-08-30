@@ -69,6 +69,7 @@ yabai -m space 8 --label games
 
 # don't manage rules
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Microsoft Edge" app="^Microsoft Edge$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
 yabai -m rule --add label="App Store" app="^App Store$" manage=off
@@ -79,6 +80,10 @@ yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="TabTopus" app="^TabTopus$" manage=off
 yabai -m rule --add label="Space Saver" app="^Space Saver$" manage=off
+yabai -m rule --add laSafaribel="Karkabiner-Elements" app="^Karabiner-Elements$" manage=off
+yabai -m rule --add laSafaribel="Pngyu" app="^Pngyu$" manage=off
+yabai -m rule --add laSafaribel="Onyx" app="^Onyx$" manage=off
+yabai -m rule --add app="^Medidor de Color Digital$" sticky=on
 
 # signals
 #yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
