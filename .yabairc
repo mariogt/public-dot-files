@@ -20,10 +20,10 @@ yabai -m config external_bar                off:45:0
 
 #padding
 yabai -m config top_padding                 30
-yabai -m config bottom_padding              10
-yabai -m config left_padding                10
-yabai -m config right_padding               10
-yabai -m config window_gap                  10
+yabai -m config bottom_padding              5
+yabai -m config left_padding                5
+yabai -m config right_padding               5
+yabai -m config window_gap                  5
 
 #mouse
 yabai -m config mouse_follows_focus         on
@@ -78,11 +78,11 @@ yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
-yabai -m rule --add label="TabTopus" app="^TabTopus$" manage=off
+yabai -m rule --add label="TabTopus" app="^TabTopus$" =off
 yabai -m rule --add label="Space Saver" app="^Space Saver$" manage=off
-yabai -m rule --add laSafaribel="Karkabiner-Elements" app="^Karabiner-Elements$" manage=off
-yabai -m rule --add laSafaribel="Pngyu" app="^Pngyu$" manage=off
-yabai -m rule --add laSafaribel="Onyx" app="^Onyx$" manage=off
+yabai -m rule --add label="Karkabiner-Elements" app="^Karabiner-Elements$" title="Karabiner-Elements Preferences"  manage=off
+yabai -m rule --add label="Pngyu" app="^Pngyu$" manage=off
+yabai -m rule --add label="Onyx" app="^Onyx$" manage=off
 yabai -m rule --add app="^Medidor de Color Digital$" sticky=on
 
 # signals
