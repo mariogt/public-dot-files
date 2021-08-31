@@ -10,7 +10,7 @@ ctrl + shift - b        : open -na /Applications/Microsoft\ Edge.app
 ctrl + shift - e        : open -na /Applications/Emacs.app
 ctrl + shift - k        : bbedit --new-window bug.txt
 ctrl + shift - m        : open -a /System/Applications/Utilities/Activity\ Monitor.app
-ctrl + shift - v        : mp3blaster --playmode=allrandom
+ctrl + shift - v        : open -a /System/Applications/System\ Preferences.app
 
 # Navigation
 alt - j                 : yabai -m window --focus north
@@ -51,23 +51,23 @@ ctrl + alt - p          : yabai -m display --focus east || yabai -m display --fo
 
 # Resize windows
 ctrl + alt - h          : \
-                           yabai -m window --resize left:-20:0 ; \
+yabai -m window --resize left:-20:0 ; \
 
 ctrl + alt - k          : \
-                           yabai -m window --resize bottom:0:20 ; \
-                           yabai -m window --resize top:0:20
+yabai -m window --resize bottom:0:20 ; \
+yabai -m window --resize top:0:20
 
 ctrl + alt - j          : \
-                           yabai -m window --resize top:0:-20 ; \
-                           yabai -m window --resize bottom:0:-20
+yabai -m window --resize top:0:-20 ; \
+yabai -m window --resize bottom:0:-20
 
 ctrl + alt - l          : \
-                           yabai -m window --resize right:20:0 ; \
-                           yabai -m window --resize left:20:0
+yabai -m window --resize right:20:0 ; \
+yabai -m window --resize left:20:0
 
 # Float and center window <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 shift + alt - c         : yabai -m window --toggle float;\
-                          yabai -m window --grid 4:4:1:1:2:2
+yabai -m window --grid 4:4:1:1:2:2
 
 # Equalize size of windows
 ctrl + alt - 0          : yabai -m space --balance
@@ -91,7 +91,7 @@ shift + ctrl + alt - a  : yabai -m window --toggle border
 
 # Restart Yabai
 shift + ctrl + alt - r  : killall yabai &> /dev/null ; \
-                          yabai &> /dev/null &
+yabai &> /dev/null &
 
 # Make window native fullscreen
 ctrl + alt - f          : yabai -m window --toggle zoom-fullscreen
