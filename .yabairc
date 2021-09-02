@@ -52,20 +52,35 @@ yabai -m config active_window_border_color   0xe0ff00ff
 yabai -m config normal_window_border_color   0x00010101
 yabai -m config insert_feedback_color        0xaad75f5f
 
-# mission-control desktop labels
-yabai -m space 1 --label code
-yabai -m space 2 --label mail
-yabai -m space 3 --label web
-yabai -m space 4 --label notes
-yabai -m space 5 --label re
-yabai -m space 6 --label media
-yabai -m space 7 --label social
-yabai -m space 8 --label games
+# Override default layout
+yabai -m config --space 8 layout float
 
-# # assign apps to space rules
-# yabai -m rule --add app="^Mail$" space=mail
-# yabai -m rule --add app="^Safari$" space=web
-# yabai -m rule --add app="^Notes$" space=notes
+# mission-control desktop labels
+yabai -m space 1 --label web
+yabai -m space 2 --label code
+yabai -m space 3 --label webdev
+yabai -m space 4 --label work
+yabai -m space 5 --label misc
+yabai -m space 6 --label email
+yabai -m space 7 --label aux
+yabai -m space 8 --label game
+
+# assign apps to space rules
+yabai -m rule --add app="^Xcode$" space=code
+yabai -m rule --add app="^Code$" space=code
+yabai -m rule --add app="^Microsoft Excel$" space=work
+yabai -m rule --add app="^Microsoft Word$" space=work
+yabai -m rule --add app="^Microsoft Power Point$" space=work
+yabai -m rule --add app="^Mail$" space=email
+yabai -m rule --add app="^Calendario$" space=email
+yabai -m rule --add app="^Contactos$" space=email
+yabai -m rule --add app="^Cyberduck$" space=webdev
+yabai -m rule --add app="^OpenEmu$" space=game
+yabai -m rule --add app="^SameBoy$" space=game
+yabai -m rule --add app="^scummvm$" space=game
+yabai -m rule --add app="^GOG Galaxy$" space=game
+yabai -m rule --add app="^Steam$" space=game
+yabai -m rule --add app="^Battle.net$" space=game
 
 # don't manage rules
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
