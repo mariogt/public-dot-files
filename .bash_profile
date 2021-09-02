@@ -101,9 +101,6 @@ export LESS="$LESS -R -Q"
 # sort folder by size
 alias dsort='du -m --max-depth 1 | sort -rn'
 
-# ssh connect to mariogt.com
-alias mariogtssh='ssh -p 2222 mariogtc@162.241.253.177'
-
 # bash colors
 colorflag="--color"
 
