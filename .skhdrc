@@ -3,12 +3,17 @@
 # https://www.mariogt.com
 # mario@mariogt.com
 
+# kill Yabai
+ctrl + shift - k        : killall yabai
+# Restart Yabai
+shift + ctrl + alt - r  : killall yabai &> /dev/null ; \
+yabai &> /dev/null &
+
 # open apps
 cmd - return            : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
 alt + cmd - return      : osascript ~/code/sourceCode/scripts/openwindow.sh
 ctrl + shift - b        : open -na /Applications/Microsoft\ Edge.app
 ctrl + shift - e        : open -na /Applications/Emacs.app
-ctrl + shift - k        : bbedit --new-window bug.txt
 ctrl + shift - m        : open -a /System/Applications/Utilities/Activity\ Monitor.app
 ctrl + shift - v        : open -a /System/Applications/System\ Preferences.app
 
@@ -88,10 +93,6 @@ shift + alt - space     : yabai -m window --toggle float
 
 # toggle borders
 shift + ctrl + alt - a  : yabai -m window --toggle border
-
-# Restart Yabai
-shift + ctrl + alt - r  : killall yabai &> /dev/null ; \
-yabai &> /dev/null &
 
 # Make window native fullscreen
 ctrl + alt - f          : yabai -m window --toggle zoom-fullscreen
