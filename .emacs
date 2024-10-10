@@ -266,7 +266,7 @@
 ;; super key to left windows key on Windows NT systems
 (when (eq system-type 'windows-nt)
   (setq-default w32-pass-lwindow-to-system nil)
-  (setq w32-lwindow-modifier 'super))
+  (setq-default w32-lwindow-modifier 'super))
 
 ;; bind for enlarge o shrink windows splits
 (global-set-key (kbd "M-s-k") 'enlarge-window)
@@ -411,6 +411,7 @@
 ;;   (lsp-keymap-prefix "C-c l"))
 
 ;; lsp
+(require 'lsp-mode)
 (setq-default lsp-auto-guess-root nil)
 (setq-default lsp-eldoc-render-all t)
 (setq-default lsp-eldoc-hook nil)
@@ -510,15 +511,6 @@
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-  ;; ;; csharp
-  ;; (add-hook 'csharp-mode-hook #'omnisharp-start-omnisharp-server)
-  ;; (add-hook 'csharp-mode-hook #'lsp)
-  ;; (lsp-register-client
-  ;;  (make-lsp-client :new-connection (lsp-stdio-connection '"omnisharp")
-  ;;                   :major-modes '(omnisharp-mode)
-  ;;                   :priority -1
-  ;;                   :server-id 'omnisharp))
   )
 
 ;; build make setup
