@@ -1,5 +1,5 @@
 # bash profile by Mario Gajardo Tassara
-# updated at 10-10-2024 20:05:00
+# updated at 16-10-2024 20:58
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -9,8 +9,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-  *) return ;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -42,7 +42,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color | *-256color) color_prompt=yes ;;
+tmux-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -70,10 +70,10 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-  xterm* | rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-  *) ;;
+xterm* | rxvt*)
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -131,10 +131,12 @@ unset file
 # lang
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export LC_ALL=C
+export LC_ALL=en_US.UTF-8
 
-# nvim as vim 
+# nvim as vim
 alias vim='nvim'
+
+alias ,.='exit'
 
 # better grep
 alias grep='ggrep --color=auto'
@@ -146,7 +148,7 @@ alias bashrl='source ~/.bash_profile'
 alias apug='brew update && brew upgrade && brew autoremove && brew cleanup'
 
 # nmap scan all
-alias nmaps='sudo nmap -sn 192.168.1.1/24'
+alias nmaps='sudo nmap -sn 192.168.1.1/100'
 
 # macchanger
 alias maclist='macchanger -s en0'
@@ -178,6 +180,9 @@ alias cat='bat --theme ansi'
 #man reader -> bat
 export MANPAGER="sh -c 'col -bx | bat --theme ansi -l man -p'"
 
+# weather
+#alias tiempo='ansiweather -l Santiago,CL'
+alias tiempo='tiempoTerminal.sh'
 export EDITOR=nvim
 export CLICOLOR=1
 
@@ -195,9 +200,11 @@ alias dsort='du -m --max-depth 1 | sort -rn'
 # list by size
 alias dus='du -shc *'
 
+# count files
+alias ccu='ls | wc -l'
+
 # bash colors
 colorflag="--color"
-
 #export LS_COLORS='no=00:fi=00:di=00;32:ln=01;31:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;31:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.deb=00;31:*.rpm=00;31:*.jar=00;31:*.jpg=00;35:*.jpeg=00;35:*.gif=00;35:*.bmp=00;35:*.pbm=00;35:*.pgm=00;35:*.ppm=00;35:*.tga=00;35:*.xbm=00;35:*.xpm=00;35:*.tif=00;35:*.tiff=00;35:*.png=00;35:*.mov=00;35:*.mpg=00;35:*.mpeg=00;35:*.avi=00;35:*.fli=00;35:*.gl=00;35:*.dl=00;35:*.xcf=00;35:*.xwd=00;35:*.ogg=00;35:*.mp3=00;35:*.wav=0;35:*.c=00;32:*.h=00;32:*.cpp=00;36:*.rs=00;36:*.m=00;33:*.xib=00;31:*.swp=02;37:*.docx=00;31:*.doc=00;31:*.xlsx=00;31:*.xls=00;31:*.txt=00;31:*.log=00;33:'
 
 # recursive ls
@@ -294,18 +301,18 @@ ii() {
 extract() {
   if [ -f $1 ]; then
     case $1 in
-      *.tar.bz2) tar xjf $1 ;;
-      *.tar.gz) tar xzf $1 ;;
-      *.bz2) bunzip2 $1 ;;
-      *.rar) unrar e $1 ;;
-      *.gz) gunzip $1 ;;
-      *.tar) tar xf $1 ;;
-      *.tbz2) tar xjf $1 ;;
-      *.tgz) tar xzf $1 ;;
-      *.zip) unzip $1 ;;
-      *.Z) uncompress $1 ;;
-      *.7z) 7z x $1 ;;
-      *) echo "'$1' no se puede extraer via extract()" ;;
+    *.tar.bz2) tar xjf $1 ;;
+    *.tar.gz) tar xzf $1 ;;
+    *.bz2) bunzip2 $1 ;;
+    *.rar) unrar e $1 ;;
+    *.gz) gunzip $1 ;;
+    *.tar) tar xf $1 ;;
+    *.tbz2) tar xjf $1 ;;
+    *.tgz) tar xzf $1 ;;
+    *.zip) unzip $1 ;;
+    *.Z) uncompress $1 ;;
+    *.7z) 7z x $1 ;;
+    *) echo "'$1' no se puede extraer via extract()" ;;
     esac
   else
     echo"'$1' no es un fichero valido"
@@ -322,13 +329,13 @@ alias gitpush='sh gitpush.sh updates'
 alias cdscript='cd $HOME/github/scripts'
 alias cdgit='cd $HOME/github'
 alias cdvim='cd $HOME/.config/nvim'
+alias cdtest='cd $HOME/test'
 
 # alias cargo Rust
 alias ccc='cargo clean'
 alias ccb='cargo build'
 alias ccr='cargo run'
 alias cct='cargo test'
-alias rustag='rusty-tags emacs'
 
 # alias zig builds
 alias zigsmall='zig build -Drelease-small=true'
@@ -339,7 +346,6 @@ alias zigtest='zig test src/main.zig'
 alias zigbuild='zig build -Doptimize=ReleaseSafe'
 
 # go stuff
-alias igopls='cd $HOME/go && sudo go install golang.org/x/tools/gopls@latest'
 
 # paths
 export PATH="$HOME/github/scripts:$PATH"
@@ -364,7 +370,9 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
 # go fuckery
+alias igopls='cd $HOME/go && sudo go install golang.org/x/tools/gopls@latest'
 export GOPATH=~/go
 
 # fzf
@@ -373,7 +381,13 @@ export GOPATH=~/go
 # Use ~~ as the trigger sequence instead of the default **
 # export FZF_COMPLETION_TRIGGER='~~'
 
+#
 # Set the DISPLAY
+#
 export DISPLAY=:0
 
+# emacsclient instead of bare emacs
+#emacs() { emacsclient -a 'emacs' -n "$@" 2>/dev/null || command emacs; }
+
 # rust stuff
+. "$HOME/.cargo/env"
